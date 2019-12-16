@@ -34,13 +34,14 @@ const postCSSLoader = {
 };
 
 module.exports = {
+    mode: 'development',
     entry: {
-        chat: './front/main.js'
+        nodeApp: './front/main.js'
     },
     output: {
         filename: '[name].min.js',
-        path: path.resolve(__dirname, './web/node-app/'),
-        publicPath: '/node-app/'
+        path: path.resolve(__dirname, './public/node-app/'),
+        publicPath: '/public/'
     },
     module: {
         rules: [
@@ -94,17 +95,6 @@ module.exports = {
                 }
             }
         ]
-    },
-    optimization: {
-        splitChunks: {
-            cacheGroups: {
-                commons: {
-                    test: /[\\/]node_modules[\\/]/,
-                    name: 'vendor',
-                    chunks: 'all'
-                }
-            }
-        }
     },
     plugins: [
         new CleanWebpackPlugin()
